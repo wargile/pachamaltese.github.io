@@ -1,0 +1,17 @@
+---
+title: Creating plots in R using ggplot2 - part 2: area plots
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-12-22
+Category: R
+Tags: R, Ggplot2, Tutorials
+Slug: ggplottutorial2
+Header_Cover: theme/images/cover.svg
+Summary: This is the result of collaborative work with <a href="https://twitter.com/t_redactyl">Jodie Burchell</a>.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/ggplottutorial2/')
+```
+
+<meta http-equiv="refresh" content="0; url=http://t-redactyl.github.io/blog/2015/12/creating-plots-in-r-using-ggplot2-part-2-area-plots.html" />

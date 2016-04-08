@@ -1,0 +1,20 @@
+---
+title: Data Analysis Lectures
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-10-20
+Category: R
+Tags: R, RStudio, Statistics, Course material, Linear regression, Ggplot2
+Slug: dataanalysislectures
+Header_Cover: theme/images/cover.svg
+Summary: Downloadable and self-contained lectures in spanish.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/ggplottutorial2/')
+```
+
+Last term I taught Data Analysis at Andrés Bello National University (UNAB) with Ramón Cornejo-Múñoz. Course material (in spanish) and Rmd files ready to download under Creative Commons.
+
+Using github-pages we were able to create a <a href="http://pachamaltese.github.io/analisis-de-datos-unab/" target="_blank">site project</a> with downloadable and self-contained lectures. 
+          

@@ -1,0 +1,70 @@
+---
+title: Trade Chile-China-World
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-12-01
+Category: Statistics
+Tags: Statistics, R, Ggplot2, Trade
+Slug: tradechilechinaworld
+Summary: Charts about imports and exports in Chile, and many more related to trade.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/tradechilechina/')
+```
+
+Charts about imports and exports in Chile, and many more related to trade. Made with R and available in <a href="../content/tradechilechina/chile-china-mundo-es.png" target="_blank">Español</a>, <a href="../content/tradechilechina/chile-china-mundo-en.png" target="_blank">English</a> and <a href="../content/tradechilechina/chile-china-mundo-cn.png" target="_blank">中文</a> (thanks a lot to Maria Chen for correcting my chinese grammar)
+
+Preview
+
+```{r preview, echo=FALSE}
+setwd("/Users/pacha/pachamaltese.github.io/blog/content/tradechilechina/")
+library(XLConnect)
+library(rCharts)
+library(ggplot2)
+library(grid)
+library(gridExtra)
+library(RColorBrewer)
+library(scales)
+library(plyr)
+library(cowplot)
+
+file <- paste0(getwd(),"/datos-TLC-Chile-China.xlsx")
+
+data2 <- readWorksheetFromFile(file, sheet = "Sheet1", region = "A16:F25", header = TRUE)
+data2 <- as.data.frame(data2)
+
+g15 <- ggplot() + theme_bw() +
+  geom_line(aes(y = bccc, x = anio, colour = "bccc"), size=1.5, data = data2, stat="identity") +
+  geom_line(aes(y = bcceeuu, x = anio, colour = "bcceeuu"), size=1.5, data = data2, stat="identity") + 
+  geom_line(aes(y = bccue, x = anio, colour = "bccue"), size=1.5, data = data2, stat="identity") 
+g15 <- g15 + 
+  ylab("Millones de USD") + 
+  xlab("Año") + 
+  scale_x_continuous(breaks=seq(2000,2014,2)) + 
+  scale_y_continuous(breaks=seq(-10000,15000,5000)) + 
+  expand_limits(y=c(-10000,15000)) + 
+  theme(panel.background = element_rect(fill="white"), panel.grid = element_line(colour="white"))
+g15 <- g15 + 
+  scale_color_manual(labels = c("Balanza Comercial con China (socio comercial #1)", "Balanza Comercial con EEUU (socio comercial #2)", "Balanza Comercial con UE (socio comercial #3)"), values = c("#4169e1", "#d68a59","#556b2f"))
+g15 <- g15 + 
+  theme(legend.position="bottom", legend.direction="horizontal", legend.title = element_blank(), axis.line = element_line(size=1.5)) + 
+  ggtitle("Balanza Comercial con China, EEUU y UE") + 
+  theme(plot.title=element_text(size=20, family="OfficinaSanITC-Book"), text=element_text(size=18, family="OfficinaSanITC-Book")) + 
+  guides(col = guide_legend(nrow = 3))
+g15
+
+g16 <- ggplot() + theme_bw() + geom_line(aes(y = bccc, x = anio, colour = "bccc"), size=1.5, data = data2, stat="identity") + geom_line(aes(y = bcceeuu, x = anio, colour = "bcceeuu"), size=1.5, data = data2, stat="identity") + geom_line(aes(y = bccue, x = anio, colour = "bccue"), size=1.5, data = data2, stat="identity") 
+g16 <- g16 + ylab("USD million") + xlab("Year") + scale_x_continuous(breaks=seq(2000,2014,2)) + scale_y_continuous(breaks=seq(-10000,16000,5000)) + expand_limits(y=c(-10000,16000)) + theme(panel.background = element_rect(fill="white"), panel.grid = element_line(colour="white"))
+g16 <- g16 + scale_color_manual(labels = c("Balance of trade with China (#1 trade partner)", "Balance of trade with the US (#2 trade partner)", "Balance of trade with the EU (#3 trade partner)"), values = c("#4169e1", "#d68a59","#556b2f"))
+g16 <- g16 + theme(legend.position="bottom", legend.direction="horizontal", legend.title = element_blank(), axis.line = element_line(size=1.5)) + ggtitle("Balance of trade with China, the US and the EU") + theme(plot.title=element_text(size=20, family="OfficinaSanITC-Book"), text=element_text(size=18, family="OfficinaSanITC-Book")) + guides(col = guide_legend(nrow = 3))
+g16
+
+g17 <- ggplot() + theme_bw() + geom_line(aes(y = bccc, x = anio, colour = "bccc"), size=1.5, data = data2, stat="identity") + geom_line(aes(y = bcceeuu, x = anio, colour = "bcceeuu"), size=1.5, data = data2, stat="identity") + geom_line(aes(y = bccue, x = anio, colour = "bccue"), size=1.5, data = data2, stat="identity")
+g17 <- g17 + ylab("百万美元") + xlab("年") + scale_x_continuous(breaks=seq(2000,2014,2)) + scale_y_continuous(breaks=seq(-10000,17000,5000)) + expand_limits(y=c(-10000,17000)) + theme(panel.background = element_rect(fill="white"), panel.grid = element_line(colour="white"))
+g17 <- g17 + scale_color_manual(labels = c("中国(第一贸易合作伙伴)淨出口智利的产品", "美国(第二贸易合作伙伴)淨出口智利的产品", "欧盟(第三贸易合作伙伴)淨出口智利的产品"), values = c("#4169e1", "#d68a59","#556b2f"))
+g17 <- g17 + theme(legend.position="bottom", legend.direction="horizontal", legend.title = element_blank(), axis.line = element_line(size=1.5)) + ggtitle("淨出口中国，美国和欧盟进口产品") + theme(plot.title=element_text(size=20, family="AdobeHeitiStd-Regular"), text=element_text(size=18, family="AdobeHeitiStd-Regular")) + guides(col = guide_legend(nrow = 3))
+g17
+```
+
+

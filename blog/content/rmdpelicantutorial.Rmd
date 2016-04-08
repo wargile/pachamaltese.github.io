@@ -1,0 +1,65 @@
+---
+title: Using Rmd Markdown in Pelican
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-12-25
+Category: R
+Tags: R, RStudio, Markdown, Rmarkdown, Python, Pelican, Tutorials
+Slug: rmdpelicantutorial
+Header_Cover: theme/images/cover.svg
+Summary: A definitive setup for OSX.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/cvtemplate/')
+```
+
+My notebook is dead until I buy a new battery. Now I'm using a lent MacBook Pro for urgent work and I had to install R, RStudio and Stata. After doing the basics I've realised a lot of things weren't working as they were on my laptop.
+
+This blog is based on Pelican. Among other R's useful packages, I use XLConnect, knitr and rmarkdown that were easy to install without problems and only required Java updates and installing some dependencies from R prompt. The problem came with many errors when I tried to finish a blog entry after writing `pelican content` in terminal: 
+
+#Starting point
+These readings were really useful and after I did follow all the steps here I was still obtaining errors. It is very important to follow these steps before reading the rest of this entry.
+
+* [Pelican documentation](http://docs.getpelican.com/en/3.6.3/quickstart.html) 
+* [Rmd reader on Github](https://github.com/getpelican/pelican-plugins/tree/master/rmd_reader)
+* [Agapow on the core of this article](http://www.agapow.net/programming/web-development/pelican/using-rmd/)
+* [R. J. Weiss on the core of this article](https://rjweiss.github.io/articles/2014_08_25/testing-rmarkdown-integration/)
+ 
+#Setting up everything
+The above pages are really clear but I needed to work out a little bit more to obtain an error-free result.
+
+##First error 
+
+```{r, eval=FALSE}
+ValueError: unknown locale: UTF-8
+```
+
+To solve this part I did follow [stackoverflow](http://stackoverflow.com/questions/33716748/python-valueerror-unknown-locale-utf-8), but I had to create my own solution which was adding two lines to my `.bash_profile` file:
+```{r, eval=FALSE}
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+```
+
+##Second error
+Then I tried to finish a blog entry and the results were lots of these after writing `pelican content` in terminal:
+```{r, eval=FALSE}
+ERROR: Could not process ./file.Rmd
+  | TypeError: (u'Pelican does not know how to parse %s', u'/Users/pacha/pachamaltese.github.io/blog/content/file.Rmd')
+```
+
+I had to install stock Python (not OSX pre-installed Python) using [homebrew](http://brew.sh/) as it is stated in [stackoverflow](http://stackoverflow.com/questions/26508606/error-using-pelican-quickstart-no-module-named-html-parser)
+
+After installing homebrew I did run these lines in terminal:
+```{r,eval=FALSE}
+sudo -H pip uninstall pelican
+brew install python
+which python # should show /usr/local/bin/python
+python -V # Python 2.7.11 in my case
+pip install pelican
+```
+
+Then I did restart my computer and Pelican worked fine.
+
+
+

@@ -1,0 +1,19 @@
+---
+title: LaTeX Quick Tutorial
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-09-17
+Category: LaTeX
+Tags: LaTeX, Tutorials
+Slug: latexquicktutorial
+Header_Cover: theme/images/cover.svg
+Summary: Very basic tutorial with downloadable examples.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/latexquicktutorial/')
+```
+
+Once I had many students curious about LaTeX and their interest became a set of LaTeX sessions for [Catedras Libres](https://www.facebook.com/catedraslibres/?fref=ts) where I had a lot of students from different universities.
+
+Available [here](https://github.com/pachamaltese/tutorial-express-latex).

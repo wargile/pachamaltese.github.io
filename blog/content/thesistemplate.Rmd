@@ -1,0 +1,21 @@
+---
+title: LaTeX Thesis Template
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-07-14
+Category: LaTeX
+Tags: LaTeX, Templates
+Slug: latexthesistemplate
+Header_Cover: theme/images/cover.svg
+Summary: For my thesis I've created a LaTeX template according to my university's rules.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/thesistemplate/')
+```
+
+For my thesis I've created a LaTeX template according to my university's rules. If you don't know $\rm\LaTeX$ you can check a <a href="https://github.com/pachamaltese/tutorial-express-latex" target="_blank">quick tutorial</a> that I made for my students. 
+
+My thesis was written in english but this template is in spanish. The idea of the template is that you only need to care about the content of the document instead of fighting with $\rm\LaTeX$ page breaks, page numbering, indentation, etc.
+
+Available [here](https://github.com/pachamaltese/tesis-uchile2).

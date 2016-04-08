@@ -1,0 +1,17 @@
+---
+title: David Bowie Discography: A timeline made using R
+author: "Mauricio Vargas S. 帕夏"
+Date: 2016-01-10
+Category: R
+Tags: R, rCharts
+Slug: bowie
+Header_Cover: theme/images/cover.svg
+Summary: A small tribute to a big legend.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/ggplottutorial2/')
+```
+
+<meta http-equiv="refresh" content="0; url=http://pachamaltese.github.io/bowie-timeline" />

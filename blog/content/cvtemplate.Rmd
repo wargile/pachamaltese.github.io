@@ -1,0 +1,19 @@
+---
+title: LaTeX CV Template
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-12-01
+Category: LaTeX
+Tags: LaTeX, XeLaTeX, Templates
+Slug: cvtemplate
+Header_Cover: theme/images/cover.svg
+Summary: LaTeX CV template in english and chinese.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/cvtemplate/')
+```
+
+My CV from the top page is available in $\rm\TeX$ format. Beware I compile these documents with $\rm Xe\LaTeX$ as I write chinese characters. 
+
+Available [here](https://github.com/pachamaltese/cv-template).

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="640"
+   height="480"
+   id="svg2"
+   inkscape:version="0.91+devel r13781 custom"
+   sodipodi:docname="eu.svg">
+  <metadata
+     id="metadata43">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1048"
+     inkscape:window-height="681"
+     id="namedview41"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.7654321"
+     inkscape:cx="362.13924"
+     inkscape:cy="282.73394"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="320.08064,14.370968"
+       orientation="1,0"
+       id="guide3352" />
+    <sodipodi:guide
+       position="770.80645,241.69355"
+       orientation="0,1"
+       id="guide3354" />
+  </sodipodi:namedview>
+  <desc
+     id="desc4">European flag</desc>
+  <defs
+     id="defs6">
+    <g
+       id="s">
+      <g
+         id="c">
+        <path
+           id="t"
+           d="M 0,0 0,1 0.5,1 Z"
+           transform="rotate(18,3.1568758,-0.5)"
+           inkscape:connector-curvature="0" />
+        <use
+           xlink:href="#t"
+           transform="scale(-1,1)"
+           id="use11"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="a">
+        <use
+           xlink:href="#c"
+           transform="rotate(72)"
+           id="use14"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#c"
+           transform="rotate(144)"
+           id="use16"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <use
+         xlink:href="#a"
+         transform="scale(-1,1)"
+         id="use18"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+  </defs>
+  <rect
+     width="640"
+     height="480"
+     id="rect20"
+     x="0"
+     y="0"
+     style="fill:#003399" />
+  <g
+     transform="matrix(26.48806,0,0,26.666667,321.06389,236.08064)"
+     id="g22"
+     style="fill:#ffcc00">
+    <use
+       xlink:href="#s"
+       y="-6"
+       id="use24"
+       x="0"
+       width="100%"
+       height="100%" />
+    <use
+       xlink:href="#s"
+       y="6"
+       id="use26"
+       x="0"
+       width="100%"
+       height="100%" />
+    <g
+       id="l">
+      <use
+         xlink:href="#s"
+         x="-6"
+         id="use29"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#s"
+         transform="rotate(-144,-2.3441661,-2.1106967)"
+         id="use31"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#s"
+         transform="rotate(144,-2.1106967,-2.3441661)"
+         id="use33"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#s"
+         transform="rotate(72,-4.6626491,-2.0759451)"
+         id="use35"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#s"
+         transform="rotate(72,-5.0759451,0.53350333)"
+         id="use37"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <use
+       xlink:href="#l"
+       transform="scale(-1,1)"
+       id="use39"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+</svg>

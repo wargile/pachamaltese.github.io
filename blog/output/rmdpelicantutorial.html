@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <base target="_blank">
+  <title>Using Rmd Markdown in Pelican</title>
+  <meta name="author" content="Mauricio Vargas S. 帕夏">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Using Rmd Markdown in Pelican written December 25, 2015 in r,rstudio,markdown,rmarkdown,python,pelican,tutorials">
+
+  <link rel="canonical" href="./rmdpelicantutorial.html">
+
+  <link href="../favicon.ico" rel="icon">
+
+
+  <link href="theme/css/screen.css"  media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="theme/css/tomorrow.css"  media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="theme/css/font-awesome.min.css"  media="screen, projection" rel="stylesheet" type="text/css" />
+
+  <script src="theme/js/modernizr-custom.js"></script>
+  <script src="theme/js/jquery-2.2.3.min.js"></script>
+  
+</head>
+  <body>
+    <a href="/" class="home-icon">
+      <img src="theme/images/home.png"/>
+    </a>
+<article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <h1><b>Using Rmd Markdown in Pelican</b></h1>
+        <div class="meta">
+          written <time datetime="2015-12-25T00:00:00+08:00">December 25, 2015</time>
+          in <span class="categories">
+            <a href="./tag/r.html">r</a>,            <a href="./tag/rstudio.html">rstudio</a>,            <a href="./tag/markdown.html">markdown</a>,            <a href="./tag/rmarkdown.html">rmarkdown</a>,            <a href="./tag/python.html">python</a>,            <a href="./tag/pelican.html">pelican</a>,            <a href="./tag/tutorials.html">tutorials</a>          </span>
+        </div>
+        <p>My notebook is dead until I buy a new battery. Now I'm using a lent MacBook Pro for urgent work and I had to install R, RStudio and Stata. After doing the basics I've realised a lot of things weren't working as they were on my laptop.</p>
+<p>This blog is based on Pelican. Among other R's useful packages, I use XLConnect, knitr and rmarkdown that were easy to install without problems and only required Java updates and installing some dependencies from R prompt. The problem came with many errors when I tried to finish a blog entry after writing <code>pelican content</code> in terminal: </p>
+<h1>Starting point</h1>
+<p>These readings were really useful and after I did follow all the steps here I was still obtaining errors. It is very important to follow these steps before reading the rest of this entry.</p>
+<ul>
+<li><a href="http://docs.getpelican.com/en/3.6.3/quickstart.html">Pelican documentation</a> </li>
+<li><a href="https://github.com/getpelican/pelican-plugins/tree/master/rmd_reader">Rmd reader on Github</a></li>
+<li><a href="http://www.agapow.net/programming/web-development/pelican/using-rmd/">Agapow on the core of this article</a></li>
+<li><a href="https://rjweiss.github.io/articles/2014_08_25/testing-rmarkdown-integration/">R. J. Weiss on the core of this article</a></li>
+</ul>
+<h1>Setting up everything</h1>
+<p>The above pages are really clear but I needed to work out a little bit more to obtain an error-free result.</p>
+<h2>First error</h2>
+<div class="highlight"><pre>ValueError<span class="o">:</span> unknown locale<span class="o">:</span> UTF<span class="m">-8</span>
+</pre></div>
+
+
+<p>To solve this part I did follow <a href="http://stackoverflow.com/questions/33716748/python-valueerror-unknown-locale-utf-8">stackoverflow</a>, but I had to create my own solution which was adding two lines to my <code>.bash_profile</code> file:</p>
+<div class="highlight"><pre>export LC_ALL<span class="o">=</span>en_US.UTF<span class="m">-8</span>
+export LANG<span class="o">=</span>en_US.UTF<span class="m">-8</span>
+</pre></div>
+
+
+<h2>Second error</h2>
+<p>Then I tried to finish a blog entry and the results were lots of these after writing <code>pelican content</code> in terminal:</p>
+<div class="highlight"><pre>ERROR<span class="o">:</span> Could not process <span class="m">.</span><span class="o">/</span>file.Rmd
+  <span class="o">|</span> TypeError<span class="o">:</span> <span class="p">(</span>u<span class="s">&#39;Pelican does not know how to parse %s&#39;</span><span class="p">,</span> u<span class="s">&#39;/Users/pacha/pachamaltese.github.io/blog/content/file.Rmd&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>I had to install stock Python (not OSX pre-installed Python) using <a href="http://brew.sh/">homebrew</a> as it is stated in <a href="http://stackoverflow.com/questions/26508606/error-using-pelican-quickstart-no-module-named-html-parser">stackoverflow</a></p>
+<p>After installing homebrew I did run these lines in terminal:</p>
+<div class="highlight"><pre>sudo <span class="o">-</span>H pip uninstall pelican
+brew install python
+which python <span class="c1"># should show /usr/local/bin/python</span>
+python <span class="o">-</span>V <span class="c1"># Python 2.7.11 in my case</span>
+pip install pelican
+</pre></div>
+
+
+<p>Then I did restart my computer and Pelican worked fine.</p>
+        <hr class="divider-short"/>
+        <!-- Disqus goes here -->
+        <!-- <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite">Disqus goes here</div>
+        </section>
+        -->
+      </div>
+    </div>
+  </div>
+</article>
+    <footer id="footer" class="her-row">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1">
+            <a href="/"><h4>Home</h4></a>
+          </div>
+
+          <div class="col-md-2">
+            <div class="social-icon-list">
+              <a title="Twitter" href="https://twitter.com/pachamaltese"><i class="fa fa-twitter fa-1x fa-pull-left fa-border"></i></a>
+              <a title="GitHub" href="https://github.com/pachamaltese"><i class="fa fa-github fa-1x fa-pull-left fa-border"></i></a>
+              <a title="LinkedIn" href="https://linkedin.com/in/mvargassepulveda"><i class="fa fa-linkedin fa-1x fa-pull-left fa-border"></i></a>
+              <a title="E-Mail" href="mailto:mauriciovargas@ug.uchile.cl"><i class="fa fa-envelope fa-1x fa-pull-left fa-border"></i></a>
+              <a title="LinkedIn" href="http://www.slideshare.net/pachamaltese"><i class="fa fa-slideshare fa-1x fa-pull-left fa-border"></i></a>
+            </div>
+          </div>
+          <div class="pull-right">
+            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. CC-BY-NC-SA-4.0 License <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fa fa-creative-commons"></i></a></h4>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-65764144-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+    
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+  </body>
+</html>

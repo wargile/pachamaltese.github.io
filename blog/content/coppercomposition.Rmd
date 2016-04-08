@@ -1,0 +1,21 @@
+---
+title: Chilean copper crisis is more than just prices
+author: "Mauricio Vargas S. 帕夏"
+Date: 2016-01-18
+Category: R
+Tags: R, rCharts, Statistics, Trade
+Slug: coppercomposition
+Header_Cover: theme/images/cover.svg
+Summary: By the beginning of 2016 it was announced that our economy is shrinking after the influence of external factors.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = 'coppercomposition/')
+```
+
+By the beginning of 2016 it was announced that our economy is shrinking after the influence of external factors. Media has reported that commodities prices are falling, but there is more than just that. Based on Chilean Copper Commission and Chile Customs data it can be shown that Chile has been increasingly exporting more bulk copper, with less added value, on detriment of its refined copper exports. Hence, our budget crisis relies, in part, to ourselves. 
+
+<p align="center">
+<iframe src="../highcharts/coppercomposition.html" frameborder=0 width=600 height=450 allowtransparency="true"></iframe>
+</p>

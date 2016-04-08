@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Chilean copper exports</title>
+
+	<body>
+
+<script type="text/javascript" src="../output/theme/js/jquery-2.2.3.min.js"></script>
+
+<script type="text/javascript">
+$(function () {
+$('#container').highcharts({
+title: {
+text: 'Chilean copper exports',
+align: 'right'
+},
+exporting: {
+buttons: { 
+exportButton: {
+enabled:false
+},
+printButton: {
+enabled:false
+}
+}
+},
+xAxis: {
+categories: [2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014]
+},
+labels: {
+items: [{
+html: '% of exports (2000)',
+style: {
+left: '10px',
+top: '-40px',
+color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+}
+},
+{
+html: '% of exports (2014)',
+style: {
+left: '165px',
+top: '-40px',
+color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+}
+}]
+},
+tooltip: {
+pointFormat: "Value: {point.y:,.0f} metric tons"
+},
+"yAxis": [
+{
+"title": {
+"text": "Exports in metric tons" 
+} 
+} 
+],
+series: [
+{
+type: 'column',
+name: 'Blister',
+data: [175,	182,	366,	457,	408,	418,	408,	450],
+color: '#00FF00',
+},
+{
+type: 'column',
+name: 'Bulk',
+data: [1749,	1553,	2166,	2171,	2014,	1863,	2093,	2728]
+}, 
+{
+type: 'column',
+name: 'Refined',
+data: [2549,	2767,	2954,	2606,	2983,	3160,	2732,	2484]
+}, 
+{
+tooltip: {
+pointFormat: "Value: {point.y:.1f}%"
+},
+type: 'pie',
+name: '% of exports (2000)',
+data: [{
+name: 'Bulk',
+y: 39.11,
+color: Highcharts.getOptions().colors[0] // Jane's color
+}, {
+name: 'Refined',
+y: 56.99,
+color: Highcharts.getOptions().colors[1] // John's color
+}, {
+name: 'Blister',
+y: 3.90,
+color: Highcharts.getOptions().colors[2] // Joe's color
+}],
+center: [50, 15],
+size: 100,
+showInLegend: false,
+dataLabels: {
+enabled: false
+}
+},
+{
+tooltip: {
+pointFormat: "Value: {point.y:.1f}%"
+},
+type: 'pie',
+name: '% of exports (2014)',
+data: [{
+name: 'Bulk',
+y: 48.18,
+color: Highcharts.getOptions().colors[0] // Jane's color
+}, {
+name: 'Refined',
+y: 43.88,
+color: Highcharts.getOptions().colors[1] // John's color
+}, {
+name: 'Blister',
+y: 7.95,
+color: Highcharts.getOptions().colors[2] // Joe's color
+}],
+center: [200, 15],
+size: 100,
+showInLegend: false,
+dataLabels: {
+enabled: false
+}
+}
+]
+});
+});
+</script>
+
+<script src="../output/theme/js/highcharts.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>

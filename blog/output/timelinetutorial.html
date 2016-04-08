@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <base target="_blank">
+  <title>Creating a timeline using R</title>
+  <meta name="author" content="Mauricio Vargas S. 帕夏">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Creating a timeline using R written February 03, 2016 in r,rcharts,python">
+
+  <link rel="canonical" href="./timelinetutorial.html">
+
+  <link href="../favicon.ico" rel="icon">
+
+
+  <link href="theme/css/screen.css"  media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="theme/css/tomorrow.css"  media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="theme/css/font-awesome.min.css"  media="screen, projection" rel="stylesheet" type="text/css" />
+
+  <script src="theme/js/modernizr-custom.js"></script>
+  <script src="theme/js/jquery-2.2.3.min.js"></script>
+  
+</head>
+  <body>
+    <a href="/" class="home-icon">
+      <img src="theme/images/home.png"/>
+    </a>
+<article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <h1><b>Creating a timeline using R</b></h1>
+        <div class="meta">
+          written <time datetime="2016-02-03T00:00:00+08:00">February 03, 2016</time>
+          in <span class="categories">
+            <a href="./tag/r.html">r</a>,            <a href="./tag/rcharts.html">rcharts</a>,            <a href="./tag/python.html">python</a>          </span>
+        </div>
+        <p>On Jan, 10th David Bowie left this earthly realm. That day, as I do like his music a lot, I decided to create a <a href="http://pachamaltese.github.io/bowie-timeline">timeline</a> and recently I decided to make the code publicly available.</p>
+<h2>Required packages</h2>
+<p>You need <a href="http://ramnathv.github.io/rCharts/">rCharts</a> whose author is <a href="https://twitter.com/ramnath_vaidya">Ramnath Vaidyanathan</a>. The package does not contain an extensive documentation yet but is a great tool.</p>
+<h2>CSV file</h2>
+<p>Create a CSV file whose basic columns are</p>
+<ul>
+<li>Start Date</li>
+<li>End Date</li>
+<li>Headline</li>
+<li>Text</li>
+<li>Media</li>
+<li>Media Credit</li>
+<li>Media Caption</li>
+<li>Media Thumbnail</li>
+<li>Type    </li>
+<li>Tag</li>
+</ul>
+<p>The only tricky part is that in Excel, Google Sheets or any other cellsheet software both start and end date must be formatted as m/d/yy hh:mm.</p>
+<h2>Loading packages</h2>
+<div class="highlight"><pre><span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;/Users/pacha/bowie-timeline/&quot;</span><span class="p">)</span> <span class="c1">#change this to your working folder</span>
+<span class="kn">library</span><span class="p">(</span>plyr<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>RCurl<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>rCharts<span class="p">)</span>
+</pre></div>
+
+
+<p>If rChart is not installed it can be installed using devtools. The package website shows some deprecated parameters and this is what works.</p>
+<div class="highlight"><pre><span class="kn">require</span><span class="p">(</span>devtools<span class="p">)</span>
+install_github<span class="p">(</span><span class="s">&#39;ramnathv/rCharts&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Reading data</h2>
+<div class="highlight"><pre>discography <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;discography.csv&quot;</span><span class="p">,</span> as.is <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+discography <span class="o">&lt;-</span> alply<span class="p">(</span>discography<span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> <span class="p">{</span>
+  <span class="kt">list</span><span class="p">(</span>startDate <span class="o">=</span> x<span class="o">$</span>Start.Date<span class="p">,</span> headline <span class="o">=</span> x<span class="o">$</span>Headline<span class="p">,</span> text <span class="o">=</span> x<span class="o">$</span>Text<span class="p">,</span> asset <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>media <span class="o">=</span> x<span class="o">$</span>Media<span class="p">))</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<h2>Creating timeline</h2>
+<div class="highlight"><pre>m <span class="o">=</span> Timeline<span class="o">$</span>new<span class="p">()</span>
+m<span class="o">$</span>main<span class="p">(</span>headline <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">&quot;David Bowie&quot;</span><span class="p">),</span> type <span class="o">=</span> <span class="s">&quot;default&quot;</span><span class="p">,</span> text <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">&quot;Discography &quot;</span><span class="p">,</span> <span class="kp">format</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;1967-01-01&quot;</span><span class="p">),</span> 
+      <span class="s">&quot;%Y&quot;</span><span class="p">),</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="kp">format</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;2016-01-01&quot;</span><span class="p">),</span> <span class="s">&quot;%Y&quot;</span><span class="p">)),</span> 
+      startDate <span class="o">=</span> <span class="kp">format</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;1967-01-01&quot;</span><span class="p">),</span> <span class="s">&quot;%Y&quot;</span><span class="p">),</span> asset <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>media <span class="o">=</span> <span class="s">&quot;img/cover.jpg&quot;</span><span class="p">))</span>
+<span class="kp">names</span><span class="p">(</span>discography<span class="p">)</span> <span class="o">&lt;-</span> <span class="kc">NULL</span>
+m<span class="o">$</span>event<span class="p">(</span>discography<span class="p">)</span>
+
+m<span class="o">$</span><span class="kp">save</span><span class="p">(</span><span class="s">&quot;index.html&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Adjustments</h2>
+<p>Open the html file just created and look for <code>storyjs-embed.js</code>. The file location will show </p>
+<div class="highlight"><pre><span class="o">/</span>Library<span class="o">/</span>Frameworks<span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">3.0</span><span class="o">/</span>Resources<span class="o">/</span><span class="kn">library</span><span class="o">/</span>rCharts<span class="o">/</span>libraries<span class="o">/</span>timeline<span class="o">/</span>js<span class="o">/</span>storyjs<span class="o">-</span>embed.js 
+</pre></div>
+
+
+<p>Change it to <code>timeline/js/storyjs-embed.js</code> but don't forget to copy the full timeline folder to your current working directory. If you don't do this step the timeline won't display in a computer without R installed.
+Now, if you open your timeline the dates will be a little bit ugly, look for <code>startDate</code> and the dates will be shown as "1/1/67 00:00", you can change it to "1967" without further steps but do the same to any <code>startDate</code>.</p>
+<h2>Optional step</h2>
+<p>The final step is to go to the timeline folder that you just copied and get hands into the CSS file, then add the Creative Commons button and favicon, and then you will obtain exactly the same result as me. You can also add Google Analytics code to your timeline as with any html file.</p>
+<h2>Verification</h2>
+<p>To avoid many commits to Github, you can run this from terminal </p>
+<div class="highlight"><pre>cd <span class="o">/</span>Users<span class="o">/</span>pacha<span class="o">/</span>bowie<span class="o">-</span>timeline
+python <span class="o">-</span>m SimpleHTTPServer
+</pre></div>
+
+
+<p>and then in your brower go to http://localhost:8000/ to see your changes.</p>
+<h2>See the full project on Github</h2>
+<p>Go to the timeline repo available <a href="https://github.com/pachamaltese/bowie-timeline">here</a>.</p>
+        <hr class="divider-short"/>
+        <!-- Disqus goes here -->
+        <!-- <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite">Disqus goes here</div>
+        </section>
+        -->
+      </div>
+    </div>
+  </div>
+</article>
+    <footer id="footer" class="her-row">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1">
+            <a href="/"><h4>Home</h4></a>
+          </div>
+
+          <div class="col-md-2">
+            <div class="social-icon-list">
+              <a title="Twitter" href="https://twitter.com/pachamaltese"><i class="fa fa-twitter fa-1x fa-pull-left fa-border"></i></a>
+              <a title="GitHub" href="https://github.com/pachamaltese"><i class="fa fa-github fa-1x fa-pull-left fa-border"></i></a>
+              <a title="LinkedIn" href="https://linkedin.com/in/mvargassepulveda"><i class="fa fa-linkedin fa-1x fa-pull-left fa-border"></i></a>
+              <a title="E-Mail" href="mailto:mauriciovargas@ug.uchile.cl"><i class="fa fa-envelope fa-1x fa-pull-left fa-border"></i></a>
+              <a title="LinkedIn" href="http://www.slideshare.net/pachamaltese"><i class="fa fa-slideshare fa-1x fa-pull-left fa-border"></i></a>
+            </div>
+          </div>
+          <div class="pull-right">
+            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. CC-BY-NC-SA-4.0 License <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fa fa-creative-commons"></i></a></h4>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-65764144-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+    
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+  </body>
+</html>

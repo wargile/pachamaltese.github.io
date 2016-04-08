@@ -1,0 +1,26 @@
+---
+title: Thesis
+author: "Mauricio Vargas S. 帕夏"
+Date: 2015-12-10
+Category: Thesis
+Tags: R, LaTeX, TikZ, Structural Equation Modelling (SEM), Exploratory Factory Analysis (EFA), Confirmatory Factor Analysis (CFA), Reproducible research, Thesis
+Slug: thesis
+Header_Cover: theme/images/cover.svg
+Summary: LaTeX and R files available for reproducibility.
+output: html_document
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, fig.width=6, fig.height=5, tidy = F, cache.path = '.cache/', fig.path = '../content/thesis/')
+```
+
+<h2><a href="https://github.com/pachamaltese/thesis/raw/master/tesis.pdf" target="_blank">PDF</a>/<a href="https://github.com/pachamaltese/thesis" target="_blank">Github repo</a></h2>
+
+My thesis analyses chilean university students performance in different courses. These students belong to different major programs imparted at Universidad de Chile: Accounting, Business Administration, Economics and Information Systems. The analyzed courses are those they share under the same course syllabus and examination and also they are mixed together without distinction of their respective programs in those courses. The provided dataset for this work considers the period 2002-2013.
+
+The cornerstone of this study is to determine if the course performance can be analyzed under a satisfactory factorial structure. For this purpose I used Exploratory Factor Analysis (EFA) and Confirmatory Factor Analysis (CFA) which is a part of Structural Equation Modeling (SEM).
+
+Cronbach's Alpha and Vuong Test are used for cross validation and to choose the best model from data. This work uses advanced statistical tools and Psychometric Theory developments are considered as theoretical pillars of this study.
+
+This is a reproducible study. Altogether with the pdf file, the interested reader may find the datasets and both the LaTeX and R files I've created during this work. My Github repo includes all the diagrams and the thesis template that I've designed according to my university's rules.
+
