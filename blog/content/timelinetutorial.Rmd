@@ -69,7 +69,7 @@ tl$save("index.html")
 ```
 
 ## Adjustments
-Update: [Daisuke Ichikawa's blog](http://daisukeichikawa.blogspot.cl/2014/03/visualize-timeline-of-japanese-star.html) has a solution to change the JS path without editing the final html outside RStudio. This are the steps, do them or the JS path or the timeline won't work in other computer.
+Update: [Daisuke Ichikawa's blog](http://daisukeichikawa.blogspot.cl/2014/03/visualize-timeline-of-japanese-star.html) has a solution to change the JS path without editing the final html outside RStudio. This are the steps, do them or the timeline won't work in other computer.
 ```{r, eval=FALSE}
 js <- paste(readLines("index.html", warn = F), collapse = "\n")
 js <- gsub("/Users/pacha/bowie-timeline/timeline/js/storyjs-embed.js", 

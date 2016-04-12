@@ -94,7 +94,7 @@ tl<span class="o">$</span><span class="kp">save</span><span class="p">(</span><s
 
 
 <h2>Adjustments</h2>
-<p>Update: <a href="http://daisukeichikawa.blogspot.cl/2014/03/visualize-timeline-of-japanese-star.html">Daisuke Ichikawa's blog</a> has a solution to change the JS path without editing the final html outside RStudio. This are the steps, do them or the JS path or the timeline won't work in other computer.</p>
+<p>Update: <a href="http://daisukeichikawa.blogspot.cl/2014/03/visualize-timeline-of-japanese-star.html">Daisuke Ichikawa's blog</a> has a solution to change the JS path without editing the final html outside RStudio. This are the steps, do them or the timeline won't work in other computer.</p>
 <div class="highlight"><pre>js <span class="o">&lt;-</span> <span class="kp">paste</span><span class="p">(</span><span class="kp">readLines</span><span class="p">(</span><span class="s">&quot;index.html&quot;</span><span class="p">,</span> warn <span class="o">=</span> <span class="bp">F</span><span class="p">),</span> collapse <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
 js <span class="o">&lt;-</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&quot;/Users/pacha/bowie-timeline/timeline/js/storyjs-embed.js&quot;</span><span class="p">,</span> 
           <span class="s">&quot;timeline/js/storyjs-embed.js&quot;</span><span class="p">,</span> 
