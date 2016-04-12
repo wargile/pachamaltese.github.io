@@ -58,23 +58,27 @@ discography <- alply(discography, 1, function(x) {
 
 ## Creating timeline
 ```{r, eval=FALSE}
-m = Timeline$new()
-m$main(headline = paste0("David Bowie"), type = "default", text = paste0("Discography ", format(as.Date("1967-01-01"), 
-      "%Y"), "-", format(as.Date("2016-01-01"), "%Y")), 
-      startDate = format(as.Date("1967-01-01"), "%Y"), asset = list(media = "img/cover.jpg"))
+tl = Timeline$new()
+tl$main(headline = paste0("David Bowie"), type = "default", text = paste0("Discography ", 
+        format(as.Date("1967-01-01"), "%Y"), "-", format(as.Date("2016-01-01"), "%Y")), 
+        startDate = format(as.Date("1967-01-01"), "%Y"), asset = list(media = "img/cover.jpg"))
 names(discography) <- NULL
-m$event(discography)
+tl$event(discography)
 
-m$save("index.html")
+tl$save("index.html")
 ```
 
 ## Adjustments
-Open the html file just created and look for `storyjs-embed.js`. The file location will show 
+Update the JS path or the timeline won't work in other computer.
 ```{r, eval=FALSE}
-/Library/Frameworks/R.framework/Versions/3.0/Resources/library/rCharts/libraries/timeline/js/storyjs-embed.js 
+js <- paste(readLines("index.html", warn = F), collapse = "\n")
+js <- gsub("/Users/pacha/bowie-timeline/timeline/js/storyjs-embed.js", 
+          "timeline/js/storyjs-embed.js", 
+          js)
+writeLines(js, con = "index.html")
 ```
-Change it to `timeline/js/storyjs-embed.js` but don't forget to copy the full timeline folder to your current working directory. If you don't do this step the timeline won't display in a computer without R installed.
-Now, if you open your timeline the dates will be a little bit ugly, look for `startDate` and the dates will be shown as "1/1/67 00:00", you can change it to "1967" without further steps but do the same to any `startDate`.
+
+Now, if you open your timeline the dates will be a little bit ugly, look for `startDate` and the dates will be shown as "1/1/67 00:00", you can change it to "1967" without further steps but do the same to any `startDate` (e.g. use replace in your editor).
 
 ## Optional step
 The final step is to go to the timeline folder that you just copied and get hands into the CSS file, then add the Creative Commons button and favicon, and then you will obtain exactly the same result as me. You can also add Google Analytics code to your timeline as with any html file.
