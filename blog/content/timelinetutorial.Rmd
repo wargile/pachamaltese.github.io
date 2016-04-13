@@ -87,7 +87,7 @@ The final step is to go to the timeline folder that you just copied and get hand
 To avoid many commits to Github, you can run this from terminal 
 ```{r, eval=FALSE}
 cd /Users/pacha/bowie-timeline
-python -m SimpleHTTPServer
+python -m SimpleHTTPServer 8000
 ```
 and then in your brower go to http://localhost:8000/ to see your changes.
 
