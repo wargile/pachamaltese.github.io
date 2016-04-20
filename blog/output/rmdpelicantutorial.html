@@ -54,26 +54,26 @@
 <h1>Setting up everything</h1>
 <p>The above pages are really clear but I needed to work out a little bit more to obtain an error-free result.</p>
 <h2>First error</h2>
-<div class="highlight"><pre>ValueError<span class="o">:</span> unknown locale<span class="o">:</span> UTF<span class="m">-8</span>
+<div class="highlight"><pre><span></span>ValueError<span class="o">:</span> unknown locale<span class="o">:</span> UTF<span class="m">-8</span>
 </pre></div>
 
 
 <p>To solve this part I did follow <a href="http://stackoverflow.com/questions/33716748/python-valueerror-unknown-locale-utf-8">stackoverflow</a>, but I had to create my own solution which was adding two lines to my <code>.bash_profile</code> file:</p>
-<div class="highlight"><pre>export LC_ALL<span class="o">=</span>en_US.UTF<span class="m">-8</span>
+<div class="highlight"><pre><span></span>export LC_ALL<span class="o">=</span>en_US.UTF<span class="m">-8</span>
 export LANG<span class="o">=</span>en_US.UTF<span class="m">-8</span>
 </pre></div>
 
 
 <h2>Second error</h2>
 <p>Then I tried to finish a blog entry and the results were lots of these after writing <code>pelican content</code> in terminal:</p>
-<div class="highlight"><pre>ERROR<span class="o">:</span> Could not process <span class="m">.</span><span class="o">/</span>file.Rmd
+<div class="highlight"><pre><span></span>ERROR<span class="o">:</span> Could not process <span class="m">.</span><span class="o">/</span>file.Rmd
   <span class="o">|</span> TypeError<span class="o">:</span> <span class="p">(</span>u<span class="s">&#39;Pelican does not know how to parse %s&#39;</span><span class="p">,</span> u<span class="s">&#39;/Users/pacha/pachamaltese.github.io/blog/content/file.Rmd&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>I had to install stock Python (not OSX pre-installed Python) using <a href="http://brew.sh/">homebrew</a> as it is stated in <a href="http://stackoverflow.com/questions/26508606/error-using-pelican-quickstart-no-module-named-html-parser">stackoverflow</a></p>
 <p>After installing homebrew I did run these lines in terminal:</p>
-<div class="highlight"><pre>sudo <span class="o">-</span>H pip uninstall pelican
+<div class="highlight"><pre><span></span>sudo <span class="o">-</span>H pip uninstall pelican
 brew install python
 which python <span class="c1"># should show /usr/local/bin/python</span>
 python <span class="o">-</span>V <span class="c1"># Python 2.7.11 in my case</span>
@@ -110,7 +110,7 @@ pip install pelican
             </div>
           </div>
           <div class="pull-right">
-            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. CC-BY-NC-SA-4.0 License <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fa fa-creative-commons"></i></a></h4>
+            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA-4.0 License</a>.</h4>
           </div>
         </div>
       </div>
@@ -127,6 +127,6 @@ pip install pelican
     </script>
     
     <!-- Custom Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </body>
 </html>

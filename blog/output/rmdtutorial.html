@@ -54,7 +54,7 @@
 <img src="../content/rmdtutorial/img1.png" alt="img1">
 <img src="../content/rmdtutorial/img2.png" alt="img2"></p>
 <p>After you create your document the first lines are like these:</p>
-<div class="highlight"><pre><span class="o">---</span>
+<div class="highlight"><pre><span></span><span class="o">---</span>
 title<span class="o">:</span> <span class="s">&quot;DOCUMENT&quot;</span>
 author<span class="o">:</span> <span class="s">&quot;Pachamaltese&quot;</span>
 <span class="kp">date</span><span class="o">:</span> <span class="s">&quot;December 2, 2015&quot;</span>
@@ -72,19 +72,19 @@ output<span class="o">:</span> html_document
 </ul>
 <p>Here is an example. I show you the result and the code using <code>eval=FALSE</code>.</p>
 <h3>Using <code>echo=TRUE</code></h3>
-<div class="highlight"><pre><span class="p">{</span>r<span class="p">,</span> echo<span class="o">=</span><span class="kc">TRUE</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span>r<span class="p">,</span> echo<span class="o">=</span><span class="kc">TRUE</span><span class="p">}</span>
 plot<span class="p">(</span>cars<span class="p">)</span>
 </pre></div>
 
 
 <p>Results in</p>
-<div class="highlight"><pre>plot<span class="p">(</span>cars<span class="p">)</span>
+<div class="highlight"><pre><span></span>plot<span class="p">(</span>cars<span class="p">)</span>
 </pre></div>
 
 
 <p><img src="../content/rmdtutorial/plot-1-1.png" title="plot of chunk plot-1" alt="plot of chunk plot-1" style="display: block; margin: auto;" /></p>
 <h3>Using <code>echo=FALSE</code></h3>
-<div class="highlight"><pre><span class="p">{</span>r<span class="p">,</span> echo<span class="o">=</span><span class="kc">FALSE</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span>r<span class="p">,</span> echo<span class="o">=</span><span class="kc">FALSE</span><span class="p">}</span>
 plot<span class="p">(</span>cars<span class="p">)</span>
 </pre></div>
 
@@ -99,7 +99,7 @@ plot<span class="p">(</span>cars<span class="p">)</span>
 <img src="../content/rmdtutorial/img7.png" width="100%" alt="img7"></p>
 <h3>Adjusting images</h3>
 <p>Figure width and height can be configured as you wish. For example</p>
-<div class="highlight"><pre><span class="p">{</span>r<span class="p">,</span> echo<span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> fig.height<span class="o">=</span><span class="m">3</span><span class="p">,</span> fig.width<span class="o">=</span><span class="m">4</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span>r<span class="p">,</span> echo<span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> fig.height<span class="o">=</span><span class="m">3</span><span class="p">,</span> fig.width<span class="o">=</span><span class="m">4</span><span class="p">}</span>
 plot<span class="p">(</span>cars<span class="p">)</span>
 </pre></div>
 
@@ -107,7 +107,7 @@ plot<span class="p">(</span>cars<span class="p">)</span>
 <p><img src="../content/rmdtutorial/plot-3-1.png" title="plot of chunk plot-3" alt="plot of chunk plot-3" style="display: block; margin: auto;" /></p>
 <h3>Creating lightweight documents</h3>
 <p>If you want your html file to be as light as possible one option is to use <code>vignette_html</code>. To to that you need to modify the first lines of your Rmd file like this:</p>
-<div class="highlight"><pre><span class="o">---</span>
+<div class="highlight"><pre><span></span><span class="o">---</span>
 title<span class="o">:</span> <span class="s">&quot;DOCUMENT&quot;</span>
 author<span class="o">:</span> <span class="s">&quot;Pachamaltese&quot;</span>
 output<span class="o">:</span> 
@@ -118,7 +118,7 @@ output<span class="o">:</span>
 
 <h3>Creating customized presentations</h3>
 <p>I saw a good design from the excellent <a href="https://www.coursera.org/course/regmods">Regression Models</a> unit on Coursera by <a href="https://twitter.com/bcaffo">Brian Caffo</a> and team. I adapted that design allowing several authors and more customization to produce my <a href="http://pachamaltese.github.io/analisis-de-datos-unab/" target="_blank">course material</a> (the Rmd and style files are available <a href="https://github.com/pachamaltese/analisis-de-datos-unab" target="_blank">here</a>). To obtain the same result you need to change the first lines of your Rmd file like this:</p>
-<div class="highlight"><pre><span class="o">---</span>
+<div class="highlight"><pre><span></span><span class="o">---</span>
 title<span class="o">:</span> <span class="s">&quot;PRESENTATION&quot;</span>
 author<span class="o">:</span> <span class="s">&quot;AUTHOR 1&quot;</span>
 hitheme<span class="o">:</span> tomorrow
@@ -218,7 +218,7 @@ knit <span class="o">:</span> slidify<span class="o">::</span>knit2slides
             </div>
           </div>
           <div class="pull-right">
-            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. CC-BY-NC-SA-4.0 License <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fa fa-creative-commons"></i></a></h4>
+            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA-4.0 License</a>.</h4>
           </div>
         </div>
       </div>
@@ -235,6 +235,6 @@ knit <span class="o">:</span> slidify<span class="o">::</span>knit2slides
     </script>
     
     <!-- Custom Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </body>
 </html>

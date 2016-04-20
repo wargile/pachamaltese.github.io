@@ -52,7 +52,8 @@ install_github('ramnathv/rCharts')
 ```{r, eval=FALSE}
 discography <- read.csv("discography.csv", as.is = TRUE)
 discography <- alply(discography, 1, function(x) {
-  list(startDate = x$Start.Date, headline = x$Headline, text = x$Text, asset = list(media = x$Media))
+  list(startDate = x$Start.Date, headline = x$Headline, text = x$Text, 
+       asset = list(media = x$Media))
 })
 ```
 

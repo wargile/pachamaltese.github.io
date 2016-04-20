@@ -60,7 +60,7 @@
 </ul>
 <p>The only tricky part is that in Excel, Google Sheets or any other cellsheet software both start and end date must be formatted as m/d/yy hh:mm.</p>
 <h2>Loading packages</h2>
-<div class="highlight"><pre><span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;/Users/pacha/bowie-timeline/&quot;</span><span class="p">)</span> <span class="c1">#change this to your working folder</span>
+<div class="highlight"><pre><span></span><span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;/Users/pacha/bowie-timeline/&quot;</span><span class="p">)</span> <span class="c1">#change this to your working folder</span>
 <span class="kn">library</span><span class="p">(</span>plyr<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>RCurl<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>rCharts<span class="p">)</span>
@@ -68,21 +68,22 @@
 
 
 <p>If rChart is not installed it can be installed using devtools. The package website shows some deprecated parameters and this is what works.</p>
-<div class="highlight"><pre><span class="kn">require</span><span class="p">(</span>devtools<span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="kn">require</span><span class="p">(</span>devtools<span class="p">)</span>
 install_github<span class="p">(</span><span class="s">&#39;ramnathv/rCharts&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <h2>Reading data</h2>
-<div class="highlight"><pre>discography <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;discography.csv&quot;</span><span class="p">,</span> as.is <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>discography <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;discography.csv&quot;</span><span class="p">,</span> as.is <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 discography <span class="o">&lt;-</span> alply<span class="p">(</span>discography<span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> <span class="p">{</span>
-  <span class="kt">list</span><span class="p">(</span>startDate <span class="o">=</span> x<span class="o">$</span>Start.Date<span class="p">,</span> headline <span class="o">=</span> x<span class="o">$</span>Headline<span class="p">,</span> text <span class="o">=</span> x<span class="o">$</span>Text<span class="p">,</span> asset <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>media <span class="o">=</span> x<span class="o">$</span>Media<span class="p">))</span>
+  <span class="kt">list</span><span class="p">(</span>startDate <span class="o">=</span> x<span class="o">$</span>Start.Date<span class="p">,</span> headline <span class="o">=</span> x<span class="o">$</span>Headline<span class="p">,</span> text <span class="o">=</span> x<span class="o">$</span>Text<span class="p">,</span> 
+       asset <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>media <span class="o">=</span> x<span class="o">$</span>Media<span class="p">))</span>
 <span class="p">})</span>
 </pre></div>
 
 
 <h2>Creating timeline</h2>
-<div class="highlight"><pre>tl <span class="o">=</span> Timeline<span class="o">$</span>new<span class="p">()</span>
+<div class="highlight"><pre><span></span>tl <span class="o">=</span> Timeline<span class="o">$</span>new<span class="p">()</span>
 tl<span class="o">$</span>main<span class="p">(</span>headline <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">&quot;David Bowie&quot;</span><span class="p">),</span> type <span class="o">=</span> <span class="s">&quot;default&quot;</span><span class="p">,</span> text <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">&quot;Discography &quot;</span><span class="p">,</span> 
         <span class="kp">format</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;1967-01-01&quot;</span><span class="p">),</span> <span class="s">&quot;%Y&quot;</span><span class="p">),</span> <span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="kp">format</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;2016-01-01&quot;</span><span class="p">),</span> <span class="s">&quot;%Y&quot;</span><span class="p">)),</span> 
         startDate <span class="o">=</span> <span class="kp">format</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;1967-01-01&quot;</span><span class="p">),</span> <span class="s">&quot;%Y&quot;</span><span class="p">),</span> asset <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>media <span class="o">=</span> <span class="s">&quot;img/cover.jpg&quot;</span><span class="p">))</span>
@@ -95,7 +96,7 @@ tl<span class="o">$</span><span class="kp">save</span><span class="p">(</span><s
 
 <h2>Adjustments</h2>
 <p>Update: <a href="http://daisukeichikawa.blogspot.cl/2014/03/visualize-timeline-of-japanese-star.html">Daisuke Ichikawa's blog</a> has a solution to change the JS path without editing the final html outside RStudio. This are the steps, do them or the timeline won't work in other computer.</p>
-<div class="highlight"><pre>js <span class="o">&lt;-</span> <span class="kp">paste</span><span class="p">(</span><span class="kp">readLines</span><span class="p">(</span><span class="s">&quot;index.html&quot;</span><span class="p">,</span> warn <span class="o">=</span> <span class="bp">F</span><span class="p">),</span> collapse <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>js <span class="o">&lt;-</span> <span class="kp">paste</span><span class="p">(</span><span class="kp">readLines</span><span class="p">(</span><span class="s">&quot;index.html&quot;</span><span class="p">,</span> warn <span class="o">=</span> <span class="bp">F</span><span class="p">),</span> collapse <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
 js <span class="o">&lt;-</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&quot;/Users/pacha/bowie-timeline/timeline/js/storyjs-embed.js&quot;</span><span class="p">,</span> 
           <span class="s">&quot;timeline/js/storyjs-embed.js&quot;</span><span class="p">,</span> 
           js<span class="p">)</span>
@@ -108,7 +109,7 @@ js <span class="o">&lt;-</span> <span class="kp">gsub</span><span class="p">(</s
 <p>The final step is to go to the timeline folder that you just copied and get hands into the CSS file, then add the Creative Commons button and favicon, and then you will obtain exactly the same result as me. You can also add Google Analytics code to your timeline as with any html file.</p>
 <h2>Verification</h2>
 <p>To avoid many commits to Github, you can run this from terminal </p>
-<div class="highlight"><pre>cd <span class="o">/</span>Users<span class="o">/</span>pacha<span class="o">/</span>bowie<span class="o">-</span>timeline
+<div class="highlight"><pre><span></span>cd <span class="o">/</span>Users<span class="o">/</span>pacha<span class="o">/</span>bowie<span class="o">-</span>timeline
 python <span class="o">-</span>m SimpleHTTPServer <span class="m">8000</span>
 </pre></div>
 
@@ -144,7 +145,7 @@ python <span class="o">-</span>m SimpleHTTPServer <span class="m">8000</span>
             </div>
           </div>
           <div class="pull-right">
-            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. CC-BY-NC-SA-4.0 License <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fa fa-creative-commons"></i></a></h4>
+            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Original design by <a href="http://AdrianArtiles.com">Adrian Artiles</a>. <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA-4.0 License</a>.</h4>
           </div>
         </div>
       </div>
@@ -161,6 +162,6 @@ python <span class="o">-</span>m SimpleHTTPServer <span class="m">8000</span>
     </script>
     
     <!-- Custom Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </body>
 </html>

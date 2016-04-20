@@ -16,7 +16,7 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 300;
   font-size: 100%;
   vertical-align: baseline;
@@ -817,8 +817,13 @@ a.bg-danger:hover {
 /* line 138, ../sass/base/bootstrap/_type.scss */
 ul,
 ol {
-  margin-top: 0;
-  margin-bottom: 10px;
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
 }
 /* line 142, ../sass/base/bootstrap/_type.scss */
 ul ul,
@@ -7659,7 +7664,7 @@ button.close {
   background-attachment: scroll;
   background-clip: border-box;
   background-color: #323232;
-  background-image: url("../../theme/images/background.jpg");
+  background-image: url("../../theme/images/cover.svg");
   background-origin: padding-box;
   background-position: 0 0;
   background-repeat: repeat;
