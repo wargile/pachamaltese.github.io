@@ -17,7 +17,7 @@ Charts about imports and exports in Chile, and many more related to trade. Made 
 
 Preview
 
-```{r preview, echo=FALSE}
+```{r preview, echo=FALSE, cache=TRUE}
 setwd("/Users/pacha/pachamaltese.github.io/blog/content/tradechilechina/")
 library(XLConnect)
 library(rCharts)
